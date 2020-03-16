@@ -49,7 +49,7 @@ Para este projeto, sua tarefa é criar consultas (queries), usando as técnicas 
 1. Selecione o banco de dados (esquema) `pokédex`.
 
 ```sql
-USE DATABASE pokédex;
+USE pokédex;
 ```
 
 2. Obtenha informações da estrutura da tabela `Pokémon`.
@@ -127,7 +127,7 @@ SELECT numero, nome, velocidade FROM Pokemon ORDER BY velocidade DESC LIMIT 10;
 15. Selecione `numero`, `nome`, `tipo1`, `tipo2`, `taxa_captura` dos pokémons que possuem os dois tipos e tenham uma taxa de captura acima de 100. Ordene os resultados decrescente pela taxa de captura.
 
 ```sql
-SELECT numero, nome, tipo1, tipo2, taxa_captura FROM Pokemon WHERE taxa_captura > 100 AND tipo2 NOT NULL ORDER BY taxa_captura DESC;
+SELECT numero, nome, tipo1, tipo2, taxa_captura FROM Pokemon WHERE taxa_captura > 100 AND tipo2 IS NULL ORDER BY taxa_captura DESC;
 ```
 
 16. Quais são os tipos primários dos pokémons?
@@ -207,7 +207,7 @@ SELECT nome FROM Pokemon WHERE geracao = 1 AND taxa_captura = 255;
 28. Quem é o mais poderoso? selecione o `Pikachu`, `Squirtle`, `Bulbasaur` e `Charmander`; ordenados decrescente pelo `total`. 
 
 ```sql
-SELECT nome FROM pokemon nome IN ('Pikachu','Squirtle','Bulbasaur','Charmander') ORDER BY total DESC;
+SELECT nome FROM pokemon WHERE nome IN ('Pikachu','Squirtle','Bulbasaur','Charmander') ORDER BY total DESC;
 ```
 
 29. Quem são os pokémons da primeira geração, que começam com a letra `d` e não possuem tipo secundário?
@@ -238,7 +238,7 @@ SELECT numero, nome, tipo1, tipo2 FROM Pokemon WHERE tipo1 ='Normal' AND tipo2 =
 33. Quem são os pokémons do tipo `Water` que não são azuis? Apresente `numero`, `nome`, `tipo1`, `tipo2` e `cor`, ordenados pelo `nome` de maneira crescente.
 
 ```sql
-SELECT numero, nome, tipo1, tipo2, cor FROM Pokemon WHERE cor != 'Blue' ORDER BT nome ASC;
+SELECT numero, nome, tipo1, tipo2, cor FROM Pokemon WHERE cor != 'Blue' ORDER BY nome ASC;
 ```
 
 34. Crie um ranking dos top 10 pokémons mais lentos.
@@ -250,7 +250,7 @@ SELECT nome FROM Pokemon ORDER BY velocidade ASC LIMIT 10;
 35. Selecione os pokémons cujo nome comece e termine com a letra `a`. 
 
 ```sql
-SELECT nome FROM Pokemon WHERE LIKE 'A%a';
+SELECT nome FROM Pokemon WHERE nome LIKE 'A%a';
 ```
 
 36. Quem são os pokémons do tipo `Fire` que não são vermelhos? Apresente `numero`, `nome`, `tipo1`, `tipo2` e `cor`, ordenados pelo `nome` de maneira crescente.
