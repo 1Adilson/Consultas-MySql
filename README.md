@@ -55,108 +55,104 @@ USE DATABASE pokédex;
 2. Obtenha informações da estrutura da tabela `Pokémon`.
 
 ```sql
-DESCRIBE pokémon;
+DESCRIBE Pokemon;
 ```
 
 3. Selecione todos os pokémons cadastrados no banco de dados.
 
 ```sql
-SELECT * FROM pokémon;
+SELECT * FROM Pokemon;
 ```
 
 4. Selecione o `numero`, `nome`, `cor`, `altura_m` e `peso_kg` de todos os pokémons cadastrados.
 
 ```sql
-SELECT numero, nome, cor, altura_m, peso_kg FROM pokémon;
+SELECT numero, nome, cor, altura_m, peso_kg FROM Pokemon;
 ```
 
 5. Qual é o `numero` e o `nome` de todos os pokémons da primeira geração?
 
 ```sql
-SELECT numero, nome FROM pokémon WHERE geracao = 1;
+SELECT numero, nome FROM Pokemon WHERE geracao = 1;
 ```
 
 6. Quais são os pokémons `Amarelo` da primeira geração?
 
 ```sql
-SELECT * FROM pokémon WHERE geracao = 1 AND cor = "Amarelo";
+SELECT * FROM Pokemon WHERE geracao = 1 AND cor = 'Amarelo';
 ```
 
 7. Qual é o pokémon mais forte?
 
 ```sql
-
+SELECT nome FROM Pokemon ORDER BY total DESC LIMIT 1;
 ```
-
 
 8. Selecione o `numero`, `nome` e `tipo1`; de todos os pokémons cujo tipo primário é `Fire`.
 
 ```sql
-
+SELECT numero, nome, tipo1 FROM Pokemon WHERE tipo1 = 'Fire'; 
 ```
 
 10. Selecione em ordem decrescente o `numero`, `nome` e `defesa` de todos os pokémons.
 
 ```sql
-
+SELECT numero, nome, defesa FROM Pokemon ORDER BY numero, nome, defesa DESC;
 ```
-
 
 11. Qual o pokémon possui *menor* taxa de captura? Selecione apenas `numero` e `nome`.
 
 ```sql
-
+SELECT numero, nome FROM Pokemon ORDER BY taxa_captura ASC LIMIT 1;
 ```
-
 
 12. Selecione todos pokémons que não possuem tipo secundário, ou seja, `tipo2`.
 
 ```sql
-
+SELECT nome FROM Pokemon WHERE NOT tipo2;
 ```
 
 13. Selecione `numero`, `nome`, `tipo1`, `tipo2` de todos os pokémons que possuem o peso entre 100kg e 500kg.
 
 ```sql
-
+SELECT numero, nome, tipo1, tipo2 FROM Pokemon WHERE peso_kg > 100 AND peso_kg < 500;
 ```
-
 
 14. Crie um ranking dos top 10 pokémons mais velozes, contendo `numero`, `nome` e `velocidade`.
 
 ```sql
-
+SELECT numero, nome, velocidade FROM Pokemon ORDER BY velocidade DESC LIMIT 10;
 ``` 
 
 
 15. Selecione `numero`, `nome`, `tipo1`, `tipo2`, `taxa_captura` dos pokémons que possuem os dois tipos e tenham uma taxa de captura acima de 100. Ordene os resultados decrescente pela taxa de captura.
 
 ```sql
-
+SELECT numero, nome, tipo1, tipo2, taxa_captura FROM Pokemon WHERE taxa_captura > 100 AND tipo2 NOT NULL ORDER BY taxa_captura DESC;
 ```
 
 16. Quais são os tipos primários dos pokémons?
 
 ```sql
-
+SELECT DISTINCT tipo1 FROM Pokemon;
 ```
 
 17. Selecione o `numero`, `nome` e `cor`; de todos os pokémons que o nome começa com a letra `D`.
 
 ```sql
-
+SELECT numero, nome, cor FROM Pokemon WHERE nome LIKE 'D%';
 ```
 
 18. Qual é o pokémon mais poderoso de todas as gerações?
 
 ```sql
-
+SELECT nome FROM Pokemon ORDER BY total DESC LIMIT 1;
 ```
 
 19. Selecione o `numero`, `nome`, `defesa`, `ataque` dos pokémons com defesa > 60 e ataque <= 70; ordenados decrescente pelo `total`. 
 
 ```sql
-
+SELECT numero, nome, defesa, ataque FROM Pokemon WHERE defesa > 60 AND ataque <=70 ORDER BY total DESC;
 ```
 
 20. Selecione todos os pokémons do tipo `Planta` e `Venenoso` que não sejam `Green`, ordenado crescente pelo `nome`.
