@@ -61,7 +61,7 @@ DESCRIBE Pokemon;
 3. Selecione todos os pokémons cadastrados no banco de dados.
 
 ```sql
-SELECT * FROM Pokemon;
+SELECT nome FROM Pokemon;
 ```
 
 4. Selecione o `numero`, `nome`, `cor`, `altura_m` e `peso_kg` de todos os pokémons cadastrados.
@@ -123,7 +123,6 @@ SELECT numero, nome, tipo1, tipo2 FROM Pokemon WHERE peso_kg > 100 AND peso_kg <
 ```sql
 SELECT numero, nome, velocidade FROM Pokemon ORDER BY velocidade DESC LIMIT 10;
 ``` 
-
 
 15. Selecione `numero`, `nome`, `tipo1`, `tipo2`, `taxa_captura` dos pokémons que possuem os dois tipos e tenham uma taxa de captura acima de 100. Ordene os resultados decrescente pela taxa de captura.
 
@@ -263,7 +262,7 @@ SELECT numero, nome, tipo1, tipo2, cor FROM Pokemon WHERE tipo1 = 'Fire' OR tipo
 37. Quais são os diferentes tipos de `peso_kg` dos pokémons? Apresente os resultados ordenados de maneira crescente.
 
 ```sql
-SELECT DISTINCT peso_kg FROM Pokemon 
+SELECT DISTINCT peso_kg FROM Pokemon;
 ```
 
 38. Selecione o `numero`, `nome` e `hp` dos pokémons com valores entre 0 e 100. Ordene os resultados de maneira crescente por `hp` e `nome`.
@@ -281,7 +280,7 @@ SELECT numero, nome, hp, ataque, defesa, total FROM Pokemon WHERE hp >= 100 AND 
 40. Selecione todos os pokémons do tipos `Water` e `Gelo`, ordenados decrescente por `total`.
 
 ```sql
-SELECT nome FROM Pokemon WHERE tipo1 = 'Water' AND tipo2 = 'Gelo' ORDER BY total DESC;
+SELECT * FROM pokemon WHERE tipo1 = 'Water' OR tipo1 = 'Gelo' AND tipo2 = 'Water' OR tipo2 = 'Gelo' ORDER BY total DESC;
 ```
 
 
