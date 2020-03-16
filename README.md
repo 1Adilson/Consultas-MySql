@@ -257,31 +257,31 @@ SELECT nome FROM Pokemon WHERE LIKE 'A%a';
 36. Quem são os pokémons do tipo `Fire` que não são vermelhos? Apresente `numero`, `nome`, `tipo1`, `tipo2` e `cor`, ordenados pelo `nome` de maneira crescente.
 
 ```sql
-SELECT numero, nome, tipo1, tipo2, cor FROM Pokemon WHERE tipo1 = 'Fire' OR tipo2 = 'Fire'AND cor != ''
+SELECT numero, nome, tipo1, tipo2, cor FROM Pokemon WHERE tipo1 = 'Fire' OR tipo2 = 'Fire' AND cor != 'Red' ORDER BY nome ASC;
 ```
 
 37. Quais são os diferentes tipos de `peso_kg` dos pokémons? Apresente os resultados ordenados de maneira crescente.
 
 ```sql
-
+SELECT DISTINCT peso_kg FROM Pokemon 
 ```
 
 38. Selecione o `numero`, `nome` e `hp` dos pokémons com valores entre 0 e 100. Ordene os resultados de maneira crescente por `hp` e `nome`.
 
 ```sql
-
+SELECT numero, nome, hp FROM Pokemon WHERE hp > 0 AND hp < 100 ORDER BY hp, nome ASC;
 ```
 
 39. Selecione o `numero`, `nome`, `hp`, `ataque`, `defesa` e `total`; dos pokémons com valores de `hp`, `ataque`, `defesa` maiores ou iguais a 100.
 
 ```sql
-
+SELECT numero, nome, hp, ataque, defesa, total FROM Pokemon WHERE hp >= 100 AND defesa >= 100 AND ataque >= 100;
 ```
 
 40. Selecione todos os pokémons do tipos `Water` e `Gelo`, ordenados decrescente por `total`.
 
 ```sql
-
+SELECT nome FROM Pokemon WHERE tipo1 = 'Water' AND tipo2 = 'Gelo' ORDER BY total DESC;
 ```
 
 
