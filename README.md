@@ -238,7 +238,7 @@ SELECT numero, nome, tipo1, tipo2 FROM Pokemon WHERE tipo1 ='Normal' AND tipo2 =
 33. Quem são os pokémons do tipo `Water` que não são azuis? Apresente `numero`, `nome`, `tipo1`, `tipo2` e `cor`, ordenados pelo `nome` de maneira crescente.
 
 ```sql
-SELECT numero, nome, tipo1, tipo2, cor FROM Pokemon WHERE cor != 'Blue' ORDER BY nome ASC;
+SELECT numero, nome, tipo1, tipo2, cor FROM Pokemon WHERE cor != 'Blue' AND tipo1 = 'Water' OR tipo2 = 'Water' ORDER BY nome ASC;
 ```
 
 34. Crie um ranking dos top 10 pokémons mais lentos.
