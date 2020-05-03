@@ -311,7 +311,6 @@ SELECT * FROM pokemon WHERE tipo1 = 'Water' OR tipo1 = 'Gelo' AND tipo2 = 'Water
 
 ```sql
 
-
 ```
 
 4. Qual é a soma das alturas dos pokémons?
