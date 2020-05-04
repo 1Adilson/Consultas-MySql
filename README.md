@@ -296,130 +296,229 @@ SELECT * FROM pokemon WHERE tipo1 = 'Water' OR tipo1 = 'Gelo' AND tipo2 = 'Water
     * taxa_captura
 
 ```sql
-
-
+SELECT 
+    MIN(total),
+    MAX(total),
+    MIN(hp),
+    MAX(hp),
+    MIN(ataque),
+    MAX(ataque),
+    MIN(defesa),
+    MAX(defesa),
+    MIN(ataque_especial),
+    MAX(ataque_especial),
+    MIN(defesa_especial),
+    MAX(defesa_especial),
+    MIN(velocidade),
+    MAX(velocidade),
+    MIN(taxa_captura),
+    MAX(taxa_captura)
+FROM
+    Pokemon;
 ```
 
 2. Quantas cores diferentes possuem os pokémons?
 
 ```sql
-
-
+SELECT 
+    COUNT(DISTINCT cor)
+FROM
+    Pokemon;
 ```
 
 3. Qual é o peso médio dos pokémons?
 
 ```sql
-
+SELECT 
+    AVG(DISTINCT peso_kg)
+FROM
+    Pokemon;
 ```
 
 4. Qual é a soma das alturas dos pokémons?
 
 ```sql
-
-
+SELECT 
+    SUM(altura_m)
+FROM
+    Pokemon
+;
 ```
 
 5. Quantos pokémons estão cadastrados no banco de dados?
 
 ```sql
-
-
+SELECT 
+    COUNT(nome)
+FROM
+    Pokemon
+;
 ```
 
 6. Qual é o altura média dos pokémons?
 
 ```sql
-
+SELECT 
+    AVG(altura_m)
+FROM
+    Pokemon;
 
 ```
 
 7. Qual é o desvio padrão do valor de HP dos pokémons?
 ```sql
-
+SELECT 
+    STD(hp)
+FROM
+    Pokemon;
 
 ```
 
 8. Quantos pokémons possuem tipo2?
 
 ```sql
-
+SELECT 
+    COUNT(nome)
+FROM
+    Pokemon
+WHERE
+    tipo2 IS NOT NULL;
 
 ```
 
 9. Quantos são os diferentes tipos primários dos pokémons? 
 
 ```sql
-
+SELECT 
+    COUNT(DISTINCT tipo1)
+FROM
+    Pokemon;
 
 ```
 
 10. Qual é a soma dos pesos dos pokémons?
 
 ```sql
-
+SELECT 
+    SUM(peso_kg)
+FROM
+    Pokemon;
 
 ```
 
 11. Qual é a quantidade de Pokémons lendários e não lendários
 
 ```sql
-
-
+SELECT 
+    lendario, COUNT(lendario)
+FROM
+    Pokemon
+GROUP BY lendario
+ORDER BY COUNT(lendario) DESC;
 ```
 
 12. Qual é a quantidade de pokémons para cada uma das diferentes cores ordenadas decrescente?
 
 ```sql
-
+SELECT 
+    cor, COUNT(cor)
+FROM
+    Pokemon
+GROUP BY cor
+ORDER BY COUNT(cor) DESC;
 
 ```
 
 13. Qual é a média de peso e altura de cada um dos tipos primários dos pokémons? Ordene os resultados decrescente respectivamente por média de peso e altura.
 ```sql
-
+SELECT 
+    tipo1, AVG(peso_kg), AVG(altura_m)
+FROM
+    Pokemon
+GROUP BY tipo1
+ORDER BY AVG(peso_kg) DESC , AVG(altura_m) DESC;
 
 ```
 
 14. Qual é a taxa de captura média por cor de cada um dos pokémons lendários?
 
 ```sql
-
+SELECT 
+    cor, AVG(taxa_captura)
+FROM
+    Pokemon
+WHERE
+    lendario = TRUE
+GROUP BY cor
+ORDER BY AVG(taxa_captura) DESC;
 
 ```
 
 15. Qual os tipos primários que possuem a taxa de captura média acima de 100
 
 ```sql
-
+SELECT 
+    tipo1, AVG(taxa_captura) AS 'media_captura'
+FROM
+    Pokemon
+WHERE
+    'media-captura' > 100
+GROUP BY tipo1
+ORDER BY 'media-captura' DESC;
 
 ```
 
 16. Agrupados por cor, quais pokémons não lendários possuem média total abaixo de 400
 
 ```sql
-
+SELECT 
+    cor, AVG(total) AS 'Media'
+FROM
+    Pokemon
+WHERE
+    lendario = False AND 'Media' < 400
+GROUP BY cor
+ORDER BY AVG(total) DESC;
 
 ```
 
 17. Qual o valor máximo total em cada uma das gerações?
 
 ```sql
-
+SELECT 
+    MAX(total), geracao
+FROM
+    Pokemon
+GROUP BY geracao
+ORDER BY MAX(total) DESC;
 
 ```
 
 18. Quantos pokémons lendários existem em cada uma das gerações?
 
 ```sql
-
+SELECT 
+    geracao, COUNT(lendario)
+FROM
+    Pokemon
+WHERE
+    lendario = TRUE
+GROUP BY geracao
+ORDER BY COUNT(lendario) DESC;
 
 ```
 
 19. Em cada uma das gerações, quantos pokémons tem tipos primários e secundários e qual a taxa_captura média deles?
 
 ```sql
-
+SELECT 
+    geracao, COUNT(tipo2), AVG(taxa_captura)
+FROM
+    Pokemon
+WHERE
+    tipo2 IS NOT NULL
+GROUP BY geracao
+ORDER BY COUNT(tipo2) DESC;
 
 ```
 
@@ -427,7 +526,11 @@ SELECT * FROM pokemon WHERE tipo1 = 'Water' OR tipo1 = 'Gelo' AND tipo2 = 'Water
 
 ```sql
 
-
+SELECT 
+    COUNT(DISTINCT cor)
+FROM
+    Pokemon
+ORDER BY COUNT(cor) DESC;
 ```
 
 
